@@ -12,6 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Hello Cine!</h1>
+        
+       
+        <p><a href="login.jsp">Iniciar sesion</a></p>
     </body>
 </html>
