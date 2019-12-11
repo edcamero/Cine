@@ -3,26 +3,30 @@ package Conexion;
 
 import java.sql.ResultSet;
 import java.sql.DriverManager;
-import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class Conexion{
-	Connection conexion;
-	Statement sentencia;
-	String usuario="postgres", password="1234", iP="localhost", puerto="5432", nombreBD="postgres";
+	private static Conexion conexion;
+	private  String usuario="postgres", password="1234", iP="localhost", puerto="5432", nombreBD="cine";
+        private Connection con;
+        private Statement sentencia;
 
-	public Conexion(){
-		this.usuario = usuario;
-		this.password = password;
-		this.iP = iP;
-		this.puerto = puerto;
-		this.nombreBD = nombreBD;
+	private Conexion(){
+            
 	}
+        
+        public static Conexion getConexion(){
+            if(conexion==null){
+                conexion=new Conexion();
+            }
+            return conexion;
+        }
 	public Conexion(String iP,String puerto,String nombreBD,String usuario,String password){
 		this.usuario = usuario;
 		this.password = password;
@@ -41,15 +45,16 @@ public class Conexion{
 						IllegalAccessException{
 
 		Class.forName(driver).newInstance();
+                
 		if (sw)
- 			conexion = DriverManager.getConnection ("jdbc:"+puente+
+ 			con = DriverManager.getConnection ("jdbc:"+puente+
 								"://"+iP+
 								":"+puerto+
 								"/"+nombreBD,usuario,password);
 		else
-			conexion = DriverManager.getConnection ("jdbc:"+puente+
+			con = DriverManager.getConnection ("jdbc:"+puente+
 								":"+nombreBD,usuario,password);
-		sentencia = conexion.createStatement (ResultSet.TYPE_SCROLL_SENSITIVE,
+		sentencia = con.createStatement (ResultSet.TYPE_SCROLL_SENSITIVE,
 								    ResultSet.CONCUR_UPDATABLE);
 	}
 
@@ -88,8 +93,8 @@ public class Conexion{
       //conexion = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521", "provision", "provision");
     
     Class.forName(driver);
-    conexion = DriverManager.getConnection(cadena_conexion,usuario,clave);
-	sentencia = conexion.createStatement (ResultSet.TYPE_SCROLL_SENSITIVE,
+    con = DriverManager.getConnection(cadena_conexion,usuario,clave);
+	sentencia = con.createStatement (ResultSet.TYPE_SCROLL_SENSITIVE,
 								    ResultSet.CONCUR_UPDATABLE);
 
 //    Statement st=conexion.createStatement();              
@@ -165,12 +170,14 @@ public class Conexion{
 	}
 
 	public void cerrar() throws SQLException{
-		conexion.close();
+		con.close();
 		sentencia.close();
 	}
 
-    public Connection getConexion() {
-        return conexion;
+    public Connection getCon() {
+        return con;
     }
+    
+ 
         
 }
