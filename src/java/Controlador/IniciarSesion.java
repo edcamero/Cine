@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Logica.Autenticacion;
+import Modelo.Autenticacion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

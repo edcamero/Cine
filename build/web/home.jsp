@@ -33,7 +33,7 @@
             <ul>
                 <li>Reservas
                     <ul>
-                                <li><a href="https://developer.mozilla.org">Nueva Reserva </a></li>  
+                                <li><a href="reserva.jsp">Nueva Reserva </a></li>  
                                 <li><a>Mis Reservas </a></li>  
                             
                     </ul>
