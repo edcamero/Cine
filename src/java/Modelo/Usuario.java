@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author blade
  */
-public class usuario {
+public class Usuario {
     private int id;
     private String documento;
     private String nombre;
@@ -22,7 +22,7 @@ public class usuario {
     private String usuario;
     private String contraseña;
 
-    public usuario(int id, String documento, String nombre, String apellido, Date fechanacimiento, String teefono, String correo, String usuario, String contraseña) {
+    public Usuario(int id, String documento, String nombre, String apellido, Date fechanacimiento, String teefono, String correo, String usuario, String contraseña) {
         this.id = id;
         this.documento = documento;
         this.nombre = nombre;

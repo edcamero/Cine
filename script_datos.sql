@@ -46,8 +46,8 @@ INSERT INTO public.pelicula(
             titulo, duracion, genero, portada)
     	VALUES ( 'Zombiland 2', '1:00:00', 'comedia','cartelera4');
 		
-
-
+INSERT INTO cine_pelicula(IDCINE,IDPELICULA)
+		VALUES(1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3);
 
 INSERT INTO public.sala(idcine,nombre,
             descripcion, asientos)
@@ -92,32 +92,32 @@ INSERT INTO public.sala(idcine,nombre,
 
 
 INSERT INTO funcion(
-            idpelicula, idsala, horainicio,fecha)
-    	VALUES ( 1, 1, '17:00', '2019-12-23');
+            idpelicula, idsala, horainicio,fecha,precio)
+    	VALUES ( 1, 1, '17:00', '2019-12-23',6000);
 INSERT INTO funcion(
-            idpelicula, idsala, horainicio ,fecha)
-    	VALUES ( 1, 4, '17:00', '2019-12-23');
+            idpelicula, idsala, horainicio ,fecha,precio)
+    	VALUES ( 1, 4, '17:00', '2019-12-23',6000);
 INSERT INTO funcion(
-            idpelicula, idsala, horainicio ,fecha)
-    	VALUES ( 1, 8, '17:00', '2019-12-23');
+            idpelicula, idsala, horainicio ,fecha,precio)
+    	VALUES ( 1, 8, '17:00', '2019-12-23',6000);
 INSERT INTO funcion(
-            idpelicula, idsala, horainicio,fecha)
-    	VALUES ( 2, 2, '17:00', '2019-12-23');
+            idpelicula, idsala, horainicio,fecha,precio)
+    	VALUES ( 2, 2, '17:00', '2019-12-23',7000);
 INSERT INTO funcion(
-            idpelicula, idsala, horainicio ,fecha)
-    	VALUES ( 2, 5, '17:00', '2019-12-23');
+            idpelicula, idsala, horainicio ,fecha,precio)
+    	VALUES ( 2, 5, '17:00', '2019-12-23',7000);
 INSERT INTO funcion(
-            idpelicula, idsala, horainicio ,fecha)
-    	VALUES ( 2, 9, '17:00', '2019-12-23');
+            idpelicula, idsala, horainicio ,fecha,precio)
+    	VALUES ( 2, 9, '17:00', '2019-12-23',7000);
 INSERT INTO funcion(
-            idpelicula, idsala, horainicio ,fecha)
-    	VALUES ( 3, 3, '17:00', '2019-12-23');
+            idpelicula, idsala, horainicio ,fecha,precio)
+    	VALUES ( 3, 3, '17:00', '2019-12-23',7000);
 INSERT INTO funcion(
-            idpelicula, idsala, horainicio ,fecha)
-    	VALUES ( 3, 6, '17:00', '2019-12-23');
+            idpelicula, idsala, horainicio ,fecha,precio)
+    	VALUES ( 3, 6, '17:00', '2019-12-23',7000);
 INSERT INTO funcion(
-            idpelicula, idsala, horainicio ,fecha)
-    	VALUES ( 3, 10, '17:00', '2019-12-23');
+            idpelicula, idsala, horainicio ,fecha,precio)
+    	VALUES ( 3, 10, '17:00', '2019-12-23',7000);
 		
 		
 		

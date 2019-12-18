@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author blade
@@ -14,6 +16,7 @@ public class Cine {
     private String nombre;
     private String direccion;
     private String telefono;
+    private ArrayList<Pelicula> peliculas;
 
     public Cine(int idcine, String nombre, String direccion,String telefono) {
         this.idcine = idcine;
@@ -53,4 +56,19 @@ public class Cine {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public ArrayList<Pelicula> getPeliculas() {
+        return peliculas;
+    }
+
+    public void setPeliculas(ArrayList<Pelicula> peliculas) {
+        this.peliculas = peliculas;
+    }
+
+    @Override
+    public String toString() {
+        return "Cine{" + "idcine=" + idcine + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + "\n}";
+    }
+    
+    
 }

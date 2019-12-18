@@ -5,25 +5,27 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  *
  * @author blade
  */
-public class sala {
+public class Sala {
     private int idsala;
     private Cine cine;
     private String nombre;
     private String descripcion;
-    private asiento asientos;
+    private int cantAsientos;
+    private ArrayList<Asiento> asientos;
 
-    public sala(int idsala, Cine cine, String nombre, String descripcion, asiento asientos) {
+    public Sala(int idsala, String nombre, String descripcion,int cantAsientos) {
         this.idsala = idsala;
-        this.cine = cine;
         this.nombre = nombre;
+        this.cantAsientos=cantAsientos;
         this.descripcion = descripcion;
-        this.asientos = asientos;
+        
     }
 
     public int getIdsala() {
@@ -58,13 +60,15 @@ public class sala {
         this.descripcion = descripcion;
     }
 
-    public asiento getAsientos() {
+    public ArrayList<Asiento> getAsientos() {
         return asientos;
     }
 
-    public void setAsientos(asiento asientos) {
+    public void setAsientos(ArrayList<Asiento> asientos) {
         this.asientos = asientos;
     }
+
+    
 
     
     

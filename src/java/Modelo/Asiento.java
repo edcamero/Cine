@@ -9,15 +9,18 @@ package Modelo;
  *
  * @author blade
  */
-public class asiento {
+public class Asiento {
     private int idasiento;
     private int nroasiento;
-    private sala sala;
+    private Boolean estado;
 
-    public asiento(int idasiento, int nroasiento, sala sala) {
+    public Asiento(int idasiento, int nroasiento) {
         this.idasiento = idasiento;
         this.nroasiento = nroasiento;
-        this.sala = sala;
+        this.estado=false;
+        
+        
+        
     }
 
     public int getIdasiento() {
@@ -36,13 +39,16 @@ public class asiento {
         this.nroasiento = nroasiento;
     }
 
-    public sala getSala() {
-        return sala;
+    public Boolean getEstado() {
+        return estado;
     }
 
-    public void setSala(sala sala) {
-        this.sala = sala;
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
+
+ 
+
 
     
 }

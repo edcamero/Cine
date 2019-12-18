@@ -11,21 +11,20 @@ import java.util.Date;
  *
  * @author blade
  */
-public class funcion {
+public class Funcion {
     private int idfuncion;
-    private pelicula pelicula;
-    private sala sala;
+    private Pelicula pelicula;
+    private Sala sala;
     private String horainicio;
     private Date fecha;
     private int precio;
 
-    public funcion(int idfuncion, pelicula pelicula, sala sala, String horainicio, Date fecha, int precio) {
+    public Funcion(int idfuncion ,String horainicio,String fechastring,int precio) {
         this.idfuncion = idfuncion;
-        this.pelicula = pelicula;
-        this.sala = sala;
         this.horainicio = horainicio;
-        this.fecha = fecha;
+        this.fecha = FechaP.ParseFecha(fechastring);
         this.precio = precio;
+        
     }
 
     public int getIdfuncion() {
@@ -36,19 +35,22 @@ public class funcion {
         this.idfuncion = idfuncion;
     }
 
-    public pelicula getPelicula() {
+    
+    
+    
+    public Pelicula getPelicula() {
         return pelicula;
     }
 
-    public void setPelicula(pelicula pelicula) {
+    public void setPelicula(Pelicula pelicula) {
         this.pelicula = pelicula;
     }
 
-    public sala getSala() {
+    public Sala getSala() {
         return sala;
     }
 
-    public void setSala(sala sala) {
+    public void setSala(Sala sala) {
         this.sala = sala;
     }
 

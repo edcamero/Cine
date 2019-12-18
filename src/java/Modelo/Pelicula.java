@@ -5,18 +5,22 @@
  */
 package Modelo;
 
+import com.google.gson.Gson;
+import java.util.ArrayList;
+
 /**
  *
  * @author blade
  */
-public class pelicula {
+public class Pelicula {
     private int idpelicula;
     private String titulo;
     private String duracion;
     private String genero;
     private String portada;
+    private ArrayList<Funcion> funciones;
 
-    public pelicula(int idpelicula, String titulo, String duracion, String genero, String portada) {
+    public Pelicula(int idpelicula, String titulo, String duracion, String genero, String portada) {
         this.idpelicula = idpelicula;
         this.titulo = titulo;
         this.duracion = duracion;
@@ -63,6 +67,28 @@ public class pelicula {
     public void setPortada(String portada) {
         this.portada = portada;
     }
+
+    public ArrayList<Funcion> getFunciones() {
+        return funciones;
+    }
+
+    public void setFunciones(ArrayList<Funcion> funciones) {
+        this.funciones = funciones;
+    }
+
     
+    
+    
+    @Override
+    public String toString() {
+        return "Pelicula:{" + "idpelicula=" + idpelicula + ", titulo=" + titulo + ", duracion=" + duracion + ", genero=" + genero + ", portada=" + portada + '}';
+    }
+    
+    
+    public String Json(){
+        Gson gson =new Gson();
+        
+        return gson.toJson(this);
+    }
     
 }

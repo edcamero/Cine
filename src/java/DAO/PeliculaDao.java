@@ -6,13 +6,12 @@
 package DAO;
 
 import Conexion.Conexion;
-import Modelo.Cine;
+
 import Modelo.Pelicula;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,61 +20,42 @@ import java.util.logging.Logger;
  *
  * @author blade
  */
-public class CineDao {
-    
-    
-    
-	public static ArrayList<Cine> listar(){
+public class PeliculaDao {
+    public static ArrayList<Pelicula> listar(int idcine){
                 Conexion pos;
                 Connection co =null;
 		PreparedStatement pst= null;
 		ResultSet rs=null;
                 
-                String consulta="SELECT * FROM CINE";
-                ArrayList<Cine> listaCines=new ArrayList();
+                String consulta="select * from pelicula as p inner join cine_pelicula as cp on cp.idpelicula=p.idpelicula  where cp.idcine="+idcine;
+                ArrayList<Pelicula> listaPelicula=new ArrayList();
                 pos=Conexion.getConexion();
                 
             try {
-                pos.ConexionPostgres();
+                
+                 pos.ConexionPostgres();
                 pst=pos.getCon().prepareStatement(consulta,ResultSet.TYPE_SCROLL_SENSITIVE, 
                         ResultSet.CONCUR_UPDATABLE);
                 rs=pst.executeQuery();
                 
-                
-                
                 while (rs.next()) {
-				Cine c=new Cine(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4));
-				c.setPeliculas(PeliculaDao.listar(c.getIdcine()));
-				listaCines.add(c);
+				Pelicula c=new Pelicula(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+				
+				listaPelicula.add(c);
 			}
-                
-                
-                
-                
-                        pst.close();
-			rs.close();
-                        pos.cerrar();
-			
                 
             } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(CineDao.class.getName()).log(Level.SEVERE, null, ex);
             }
-            return listaCines;
-                
+            return listaPelicula;
+            }
+    
+    
+    
+    public static void main(String[] args){
+        for(Pelicula a:PeliculaDao.listar(2)){
+             System.out.println(a.getTitulo()+"\n");
         }
-        
-        
-//        public static void main(String arg[]){
-//        CineDao cd= new CineDao();
-//            for (Cine a : cd.listar()) {
-//                System.out.println(a.toString());
-//                System.out.println("peliculas en este cine");
-//                
-//                for (Pelicula p : a.getPeliculas()) {
-//                    System.out.println("   "+p.toString()+"\n");
-//                }
-//            }
-//    }
-        
        
+    }
 }

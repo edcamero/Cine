@@ -4,13 +4,21 @@
     Author     : blade
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Modelo.Pelicula"%>
+<%@page import="java.util.ArrayList"%>
+
+<%@page import="Modelo.Cine"%>
+<%@page pageEncoding="UTF-8"%>
 <%
     HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("usuario");
     if(usuario==null||usuario.equals(""))
     {
         response.sendRedirect("login.jsp");
+    }else{
+        Cine miCine=null;
+        Pelicula miPeli=null;
+        
     }
     
 %>
@@ -25,39 +33,55 @@
         <title>Reserva</title>
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div><h5>Seleccione Cinema:</h5></div>
-                 <select>
-                    <option value="1">metro</option>
-                    <option value="2">cinemax</option>
-                    <option value="3">Corioto</option>
-                    
-                  </select> 
-            </div>
-            <div class="row">
-                <div class="container">
-                        <h5>Seleccionar pelicula</h5>
-                </div>
-                <% for (int i=0;i<=12;i++){%>
-                <div class="col-3">
-                    
-                        <div class="container">
-                        <img src="img/cartelera1.jpg" alt="Avatar" class="img-fluid">
-                        <div>
-                            <div class="tex-center">
-                                <h5><b>Carlos Cowboy</b></h5>
-                                <p>Genero Comedia</p>
-                              </div>
-                        </div>
-                        
-                         
-                    </div>
-                    
+        <div class="container" id="app">
+            
+            <header class="text-center">
+                <h1>Cinemas Moon</h1>
+                <br>
+                <h2>Reserva de Peliculas</h2>
+            </header>
+            
                 
-            </div>
-            <% } %>
-        </div>
+                <jsp:useBean id="list" class="DAO.CineDao" scope="page"></jsp:useBean>
+                <div class="container" id="main">
+                    <br>
+                    <br>
+                     <div class="text-center"><h3>Seleccione Cinema:</h3></div>
+                     <br>
+                     <div class="row">
+                            <%
+                             for(Cine cine:list.listar()){
+                                 %>
+                                 <div class="col-sm-4">
+                                    <div class="card">
+                                      <div class="card-body">
+                                        <h5 class="card-title"><%=cine.getNombre()%> </h5>
+                                        <p class="card-text">Ubicacion: <%=cine.getDireccion()%></p>
+                                        <p class="card-text">Telefono: <%=cine.getTelefono() %></p>
+                                        <button  class="btn btn-primary" v-on:click="verPeliculas(<%=cine.getIdcine()%>)">Ver Certelera</button>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                         <%
+                             }
+                         %>
+                    </div>
+                     
+                     
+             
+                   
     </div>
+       
+    </div>
+       <script type="text/javascript" src="js/vue.js"></script>
+       <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/javascript" src="js/reserva.js"></script>
+        
+    
     </body>
+     
+   
+    
+   
 </html>
